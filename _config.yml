@@ -1,8 +1,10 @@
-name: Photo gallery
+name: animore
 markdown: redcarpet
 pygments: true
+email: maizi.wxx@alibaba-inc.com
+description: "A websit which allow the designer to upload a creative, and someone to finish it."
 permalink: /:year/:month/:title/
-url: http://nadjetey.github.io/GridGallery/
+url: http://127.0.0.1:4000
 author:
     name: Nii Adjetey Sowah
     twitter: #

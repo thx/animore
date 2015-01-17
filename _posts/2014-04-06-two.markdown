@@ -1,7 +1,19 @@
 ---
 layout: default
 date:   2014-04-06 23:26:12
-photo: 2.png
-caption_header: Sample header
-caption: sample caption
+html: <div id="demo">
+        <img src="http://g.ald.alicdn.com/bao/uploaded/TB1n5uqGVXXXXcSXFXXSutbFXXX.jpg" width="390" height="484" alt="" class="production">
+        <div class="title"></div>
+        <div class="infoWrapper animated">
+            <a href="">2014秋冬款韩版修身格子毛呢外套中长款</a>
+        </div>
+        <div class="salesWrapper hideMe animated">
+            <div class="subWrapper">
+                <span class="price"><strong class="icon rmb">￥</strong> 3810.00</span>
+                <span class="sales salesDelay">销量：2394</span>
+            </div>
+        </div>
+    </div>
+designer: 俄木
+developer: 羽昊
 ---

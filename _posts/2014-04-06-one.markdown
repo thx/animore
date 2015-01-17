@@ -1,7 +1,7 @@
 ---
 layout: default
 date:   2014-04-06 23:26:12
-photo: 1.png
-caption_header: Sample header
-caption: sample caption
+html: <div class="circle-half"><span></span></div>
+designer: 麦梓
+developer: 麦梓
 ---
