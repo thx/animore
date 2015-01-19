@@ -4,7 +4,7 @@ pygments: true
 email: maizi.wxx@alibaba-inc.com
 description: "A websit which allow the designer to upload a creative, and someone to finish it."
 permalink: /:year/:month/:title/
-url: http://127.0.0.1:4000
+url: 
 author:
     name: Nii Adjetey Sowah
     twitter: #
