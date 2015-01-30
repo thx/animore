@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html> 
+<title>形状的秘密</title> 
+<head><meta http-equiv=Content-Type content="text/html; charset=utf-8"> 
+	<link rel="stylesheet" href="shapes.css">
+	<style type="text/css">
+body {
+	font-family: tahoma,"microsoft yahei","\5FAE\8F6F\96C5\9ED1";
+}
+section {
+	margin: 30px 0 10px;
+}
+.fl {
+	float: left;
+	*display: inline;
+}
+.ml20 {
+	margin-left: 20px;
+}
+.css {
+	padding: 0px 14px;
+	background-color: #f7f7f9;
+	border: 1px solid #e1e1e8;
+	border-radius: 4px;
+}
+.clearfix:after {
+    clear: both;
+    content: "";
+    display: block;
+    visibility: hidden;
+}
+.list {
+	background: #161616;
+}
+.list li {
+	float: left;
+	display: inline;
+	width: 100px;
+	height: 100px;
+	margin: 1px;
+	padding: 50px;
+	background: #1c1c1c;
+}
+.list li:hover,
+.list li:focus {
+	background: #161616;
+}
+
+
+
+
+	</style>
+
+</head> 
+
+<body> 
+
+<div class="border fl"></div>
+<pre class="css" style="margin-left:150px;">
+<code>
+width:0;
+height:0;
+line-height: 0;
+font-size: 0;
+border-width:50px;
+border-style:solid;
+border-color: red yellow blue green;
+</code>
+</pre>
+
+<section>从边框生成的矩形中取三角形</section>
+<div class="clearfix">
+	<img class="fl" src="http://gtms04.alicdn.com/tps/i4/TB1Z57fGFXXXXcfXVXX07tlTXXX-200-200.png" alt="" width="120" height="120">
+	<pre class="css" style="margin-left:150px;">
+可以得到两种三角形:
+
+一种是以border边为斜边的三角形，如2&3
+
+另一种是以对角线为斜边的三角形，如3==8、4&5&6&7,特点是一定有个直角
+	</pre>
+</div>
+
+<section>斜边在border边上的三角形, 6&7</section>
+<div class="triangle fl"></div>
+<pre class="css" style="margin-left:150px;">
+<code>
+width:0;
+height:0;
+line-height: 0;
+font-size: 0;
+border-width:0 50px 50px;
+border-style: solid dashed;
+border-color: blue transparent;
+</code>
+</pre>
+
+<section>斜边在对角线上的三角形, 3</section>
+<div class="triangle1 fl"></div>
+<pre class="css" style="margin-left:150px;">
+<code>
+width:0;
+height:0;
+line-height: 0;
+font-size: 0;
+border-width:100px 100px 0 0;
+border-style: solid dashed;
+border-color: red transparent;
+</code>
+</pre>
+
+<section>斜边在对角线上的三角形, 8</section>
+<div class="triangle1 triangle2 fl"></div>
+<pre class="css" style="margin-left:150px;">
+<code>
+width:0;
+height:0;
+line-height: 0;
+font-size: 0;
+border-width: 0 0 100px 100px;
+border-style: dashed solid;
+border-color: transparent red;
+</code>
+</pre>
+
+
+<div class="parallelogram fl"></div>
+<pre class="css" style="margin-left:150px;">
+<code>
+width: 100px;
+height: 100px;
+-webkit-transform: skew(20deg);
+  -moz-transform: skew(20deg);
+    -o-transform: skew(20deg);
+background: red;
+</code>
+</pre>
+
+<div class="trapezoid fl"></div>
+<pre class="css" style="margin-left:150px;">
+<code>
+height: 0;
+width: 50px;
+line-height: 0;
+font-size: 0;
+border-width: 0 40px 40px;
+border-style: solid dashed;
+border-color: blue transparent;
+</code>
+</pre>
+
+<ul class="list clearfix">
+	<li>
+		<div class="square-round-three"></div>
+	</li>
+	<li>
+		<div class="star-six"></div>
+	</li>
+	<li>
+		<div class="star-five" style="margin-top:30px;"></div>
+	</li>
+	<li>
+		<div class="pentagon" style="margin-top:40px;"></div>
+	</li>
+	<li>
+		<div class="hexagon" style="margin-top:30px;"></div>
+	</li>
+	<li>
+		<div class="heart" style="margin-top:20px;"></div>
+	</li>
+	<li>
+		<div class="infinity" style="margin-left:-30px;"></div>
+	</li>
+	<li>
+		<div class="egg"></div>
+	</li>
+	<li>
+		<div class="diamond"></div>
+	</li>
+	<li>
+		<div class="bagua"></div>
+	</li>
+	<li>
+		<div class="arrow-up"></div>
+	</li>
+	<li>
+		<div class="circle-half"></div>
+	</li>
+	<li>
+		<div class="circle-wedge-left"></div>
+	</li>
+	<li>
+		<div class="flower"></div>
+	</li>
+	<li>
+		<div class="star-eight" style="margin-top: 20px;"></div>
+	</li>
+	<li>
+		<div class="cross" style="margin-left: 35px;"></div>
+	</li>
+	<li>
+		<div class="search"></div>
+	</li>
+	<li>
+		<div class="map-pin" style="margin-left: 18px;"></div>
+	</li>
+	<li>
+		<div class="iphone"></div>
+	</li>
+	<li>
+		<div class="battery" style="margin-top: 25px;"></div>
+	</li>
+	<li>
+		<div class="eye"></div>
+	</li>
+	<li>
+		<div class="moon"></div>
+	</li>
+	<li>
+		<div class="tail"></div>
+	</li>
+</ul>
+
+
+<section>
+	<h3>附录</h3>
+	<p>IE6浏览器不支持transparent透明属性，就border生成三角技术而言，直接设置对应的透明边框的border-style属性为dotted或是dashed即可解决这一问题，原因是在IE6下，点线与虚线均以边框宽度为基准，点线长度必须是其宽度的3倍以上(height>=border-width*3)，虚线宽长度必须是其宽度的5倍以上(height>=border-width*5)，否则点线和虚线都不会出现。</p>
+</section>
+
+</body> 
+</html>
