@@ -1,7 +1,0 @@
----
-layout: default
-date:   2014-04-06 23:26:12
-html: <div class="circle-half"><span></span></div>
-designer: 麦梓
-developer: 麦梓
----
