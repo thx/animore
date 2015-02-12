@@ -1,17 +1,6 @@
-Jekyll Photo Grid Gallery
-=========
+###animore平台 动效demo 代码规范：
 
-Jekyll theme based on [Blueprint: Google Grid Gallery](http://tympanus.net/codrops/?p=18699)
-
-## [Demo](https://nadjetey.github.io/GridGallery)
-
-View this jekyll theme in action [here](https://nadjetey.github.io/GridGallery)
-
-## Screenshot
-![screenshot](https://raw.github.com/nadjetey/GridGallery/master/jggg.png)
-
-Localhost deployment
-=========
-After [downloading](https://github.com/nadjetey/GridGallery/archive/master.zip), use the normal process of serving a jekyll site. Navigate to the directory in terminal and type `jekyll build` followed by `jekyll serve`
-
-For more details, read [documentation](http://jekyllrb.com/)
+- demo的目录结构：文件夹名是依次递增的数字，文件夹内有同名的html文件作为demo入口
+- demo的html、css、js必须放在一个id为container的div内(只load了container内的内容)
+- 每一个demo的css必须在唯一的命名空间内书写
+- 每一个demo的js必须不能影响其他demo

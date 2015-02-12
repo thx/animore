@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态效果CSS3库-09</title>
+</head>
+<body>
+    <div id="container" style="width: 190px;height: 190px;">
+		<link rel="stylesheet" type="text/css" href="tmpl/5/5.css">
+		<div class="wrapper">
+            <div class="item-con" style="width: 900px;">
+                <div class="item crt">
+                    <div><img src="tmpl/5/imgs/girl.png" width="300" height="300"/></div>
+                    <div class="description">
+                        <div class="text-con">
+                            <div class="price">￥312.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div><img src="tmpl/5/imgs/girl-2.png" width="300" height="300"/></div>
+                    <div class="description">
+                        <div class="text-con">
+                            <div class="price">￥99.00</div>
+                            <div class="count">销量 : 1232</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div><img src="tmpl/5/imgs/girl-3.png" width="300" height="300"/></div>
+                    <div class="description">
+                        <div class="text-con">
+                            <div class="price">￥300.00</div>
+                            <div class="count">销量 : 444</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="indicator">
+                <div class="current">
+                    <div class="numbers">
+                        <div>1</div>
+                        <div>18</div>
+                        <div>19</div>
+                    </div>
+                </div>
+                <div class="total">/20</div>
+            </div>
+            <div class="operator left">
+                <div class="arrow"></div>
+            </div>
+            <div class="operator right">
+                <div class="arrow"></div>
+            </div>
+        </div>
+
+        <input type="button" value="切换动效皮肤"/>
+        <script type="text/javascript">
+            var wrapper = document.querySelector('.wrapper');
+
+            function changeView() {
+                wrapper.classList.contains('reverse') ? 
+                    wrapper.classList.remove('reverse') :
+                    wrapper.classList.add('reverse')
+            }
+            document.querySelector('[type=button]').onclick = changeView;
+
+            var index = 0;
+            var con = document.querySelector('.item-con');
+            var items = document.querySelectorAll('.item');
+            var indicatorNums = document.querySelector('.indicator .numbers');
+            document.querySelector('.left').onclick = function() {
+                if (index <= 0) {
+                    return;
+                }
+                items[index].classList.remove('crt');
+                index --;
+                items[index].classList.add('crt');
+                con.style.marginLeft = - index * 300 + 'px';
+                indicatorNums.style.marginTop = - index * 32 + 'px';
+            }
+            document.querySelector('.right').onclick = function() {
+                if (index >= items.length - 1) {
+                    return;
+                }
+                items[index].classList.remove('crt');
+                index ++;
+                items[index].classList.add('crt');
+                con.style.marginLeft = - index * 300 + 'px';
+                indicatorNums.style.marginTop = - index * 32 + 'px';
+            }
+        </script>
+	</div>
+</body>
+</html>

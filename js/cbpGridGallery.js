@@ -70,7 +70,7 @@
 		// items total
 		this.itemsCount = this.gridItems.length;
 		// slideshow grid
-		this.slideshow = this.el.querySelector( 'section.slideshow > ul' );
+		this.slideshow = this.el.querySelector( 'section.slideshow > .slideWrapper' );
 		// slideshow grid items
 		this.slideshowItems = [].slice.call( this.slideshow.children );
 		// index of current slideshow item
@@ -87,11 +87,9 @@
 
 	CBPGridGallery.prototype._initMasonry = function() {
 		var grid = this.grid;
-		imagesLoaded( grid, function() {
-			new Masonry( grid, {
-				itemSelector: 'li',
-				columnWidth: grid.querySelector( '.grid-sizer' )
-			});
+		new Masonry( grid, {
+			itemSelector: 'li',
+			columnWidth: grid.querySelector( '.grid-sizer' )
 		});
 	};
 
@@ -101,13 +99,19 @@
 		// open the slideshow when clicking on the main grid items
 		this.gridItems.forEach( function( item, idx ) {
 			item.addEventListener( 'click', function() {
-				self._openSlideshow( idx );
+				var me = self;
+				debugger
+				$('section.slideshow > .slideWrapper').load('tmpl/' + idx + '/' + idx + '.html #container', [], function() {
+					me.slideshowItems = [].slice.call( me.slideshow.children );
+					me._openSlideshow( idx );
+				});
+				
 			} );
 		} );
 
 		// slideshow controls
-		this.ctrlPrev.addEventListener( 'click', function() { self._navigate( 'prev' ); } );
-		this.ctrlNext.addEventListener( 'click', function() { self._navigate( 'next' ); } );
+		//this.ctrlPrev.addEventListener( 'click', function() { self._navigate( 'prev' ); } );
+		//this.ctrlNext.addEventListener( 'click', function() { self._navigate( 'next' ); } );
 		this.ctrlClose.addEventListener( 'click', function() { self._closeSlideshow(); } );
 
 		// window resize
@@ -287,7 +291,7 @@
 		var self = this,
 			onEndTransitionFn = function( ev ) {
 				if( support.transitions ) {
-					if( ev.target.tagName.toLowerCase() !== 'ul' ) return;
+					if( ev.target.tagName.toLowerCase() !== 'div' ) return;
 					this.removeEventListener( transEndEventName, onEndTransitionFn );
 				}
 				// remove classes show and current from the slideshow items
@@ -320,13 +324,13 @@
 		this.prevItem = null;
 		this.nextItem = null;
 
-		if( this.current > 0 ) {
+		/*if( this.current > 0 ) {
 			this.prevItem = this.slideshowItems[ this.current - 1 ];
 		}
 		if( this.current < this.itemsCount - 1 ) {
 			this.nextItem = this.slideshowItems[ this.current + 1 ];
-		}
-		this.currentItem = this.slideshowItems[ this.current ];
+		}*/
+		this.currentItem = this.slideshowItems[0];
 	}
 
 	// taken from https://github.com/desandro/vanilla-masonry/blob/master/masonry.js by David DeSandro

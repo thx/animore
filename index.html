@@ -1,45 +1,113 @@
----
-layout: default
----
-<div class="container">
-	<header class="clearfix">
-		<h1>{{ site.name }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animore</title>
+    <meta name="description" content="animore" />
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" type="text/css" href="css/animore.css">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+  </head>
+  <body>
+
+  <div class="container">
+	<header class="header">
+		<table>
+			<tr>
+				<td class="logo"><h1><a href="javascript:void(0);">animore</a></h1></td>
+			</tr>
+			<tr>
+				<td>
+					<table class="menu" id="J_menu">
+						<tr>
+							<td class="active"><a href="javascript:void(0);">全部动效</a></td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);">导航&菜单</a></td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);">按钮&图标</a></td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);">视差滚动</a></td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);">更新&加载</a></td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);">界面&转场</a></td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);">其它动效</a></td>
+						</tr>
+						<tr>
+							<td><a href="javascript:void(0);">GIF效果图</a></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="copyright">
+					<img src="images/m2ux.png" alt="阿里妈妈用户体验中心" width="66" height="42">
+					<p>阿里巴巴集团阿里妈妈用户体验中心</p>
+					<p>©2015</p>
+				</td>
+			</tr>
+		</table>		
 	</header>
 	<div id="grid-gallery" class="grid-gallery">
 
-	<section class="grid-wrap">
-	<ul class="grid">
-		<li class="grid-sizer"></li><!-- for Masonry column width -->
-		{% for post in site.posts %}
-		<li>
-			<div>
-				{{ post.html }}
-			</div>
-			<p>{{ post.designer }}</p>
-			<p>{{ post.developer }}</p>
-		</li>
-		{% endfor %}
-	</ul>
-	</section><!-- // grid-wrap -->
+		<section class="grid-wrap">
+		<ul id="grid" class="grid">
+			<!-- for Masonry column width -->
+		</ul>
+		</section><!-- // grid-wrap -->
 
-	<section class="slideshow">
-	<ul>
-		{% for post in site.posts %}
-		<li>
-			<figure>
-				<img src="{{ site.url }}/img/large/{{ post.photo }}" alt="img"/>
-				<figcaption><h3>{{ post.caption_header}}</h3><p>{{ post.caption }}</p></figcaption>
-			</figure>
-		</li>
-		{% endfor %}
-	</ul>
-	<nav>
-		<span class="icon nav-prev"></span>
-		<span class="icon nav-next"></span>
-		<span class="icon nav-close"></span>
-	</nav>
-	<div class="info-keys icon">Navigate with arrow keys</div>
-	</section><!-- // slideshow -->
+		<section class="slideshow">
+			<div class="slideWrapper"></div>
+			<nav>
+				<span class="icon nav-close">X</span>
+			</nav>
+			<div class="info-keys icon"></div>
+		</section><!-- // slideshow -->
 
 	</div><!-- // grid-gallery -->
 </div>
+    <script src="js/masonry.pkgd.min.js"></script>
+	<script src="js/classie.js"></script>
+	<script src="js/cbpGridGallery.js"></script>
+    <script src="js/animore.js"></script>
+    <script>
+
+	    aniList('grid', 10);
+
+    	function aniList(id, len) {
+			var node = $('#' + id);
+			var str = '<li class="grid-sizer"></li>';
+			node.css('display', 'none');
+			for(var i = 1; i <= len; i++) {
+				str += '<li><figure id="J_grid_list' + i + '"></figure></li>';
+			}
+			node.append(str);
+
+			for(var i = 1, j=0; i < len; i++) {
+				$('#J_grid_list' + i).load('tmpl/' + i + '/' + i + '.html #container', [], function() {
+					j++;
+					isLoaded(j, len);					
+				});
+			}
+				node.css('display', 'block');
+
+		}
+		function isLoaded (j, len) {
+			if(j == len-1) {
+				new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
+			}
+		}
+    </script>
+  </body>
+</html>

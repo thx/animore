@@ -1,137 +1,284 @@
-.circle-half {
-	background: #1c1c1c;
-	width: 100px;
-	height: 100px;
+.arrow-tp {
+  border-top-color: transparent;
+  border-right-color: transparent;
+  border-left-color: transparent;
 }
-.circle-half span {
-	display: inline-block;
-	width: 100%;
-	height: 100%;
-	border: 20px solid;
-	border-color: #ffffff #ffffff transparent transparent;
-	border-radius: 50%;
-	-webkit-animation: rotate 1.2s infinite linear;
-	-moz-animation: rotate 1.2s infinite linear;
-	-ms-animation: rotate 1.2s infinite linear;
-	-o-animation: rotate 1.2s infinite linear;
+.arrow-bt {
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-left-color: transparent;
 }
-@keyframes "rotate" {
-  to {
-    -webkit-transform: rotate(360deg);
-    -moz-transform: rotate(360deg);
-    -o-transform: rotate(360deg);
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
+/*Chrome any
+Firefox any
+Safari any
+Opera 12.1+
+IE 10+
+iOS any
+Android any*/
+.box {
+  display: -webkit-box;
+  /* OLD - iOS 6-, Safari 3.1-6 */
+  display: -moz-box;
+  /* OLD - Firefox 19- (buggy but mostly works) */
+  display: -ms-flexbox;
+  /* IE 10+ */
+}
+.borderbox {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+body {
+  background: #e9effd;
+}
+a {
+  outline: none;
+}
+.header {
+  width: 300px;
+  height: 100%;
+  min-height: 400px;
+  position: fixed;
+  background: #2f8de5;
+  text-align: center;
+  color: #fff;
+}
+.header table {
+  width: 100%;
+  height: 100%;
+}
+.header a {
+  outline: none;
+  color: #fff;
+}
+.logo {
+  height: 20%;
+  font-size: 42px;
+}
+.menu {
+  font-size: 14px;
+}
+.menu a:before,
+.menu a:after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  margin: 0 12px;
+  vertical-align: middle;
+  background: #fff;
+  display: inline-block;
+  *display: inline;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s ease 0;
+  -moz-transition: opacity 0.3s ease 0;
+  -ms-transition: opacity 0.3s ease 0;
+  -o-transition: opacity 0.3s ease 0;
+  transition: opacity 0.3s ease 0;
+}
+.menu .active a:before,
+.menu .active a:after {
+  opacity: 1;
+}
+.copyright {
+  height: 120px;
+  line-height: 20px;
+}
+.copyright img {
+  margin-bottom: 10px;
+}
+.grid-gallery {
+  margin-left: 300px;
+  padding: 45px 60px;
+}
+.grid-gallery .grid {
+  /* li:hover figure {
+            opacity: 0.7;
+        } */
+}
+.grid-gallery .grid li {
+  width: 220px;
+  float: left;
+  cursor: pointer;
+}
+.grid-gallery .grid figure {
+  padding: 15px;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+.grid-gallery .grid img {
+  display: block;
+  width: 100%;
+}
+/* Slideshow style */
+.slideshow {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 500;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+  -webkit-transition: opacity 0.5s, visibility 0s 0.5s;
+  transition: opacity 0.5s, visibility 0s 0.5s;
+}
+.slideshow-open .slideshow {
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+.slideWrapper {
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transform: translate3d(0, 0, 150px);
+  transform: translate3d(0, 0, 150px);
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+}
+.slideWrapper.animatable > div {
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+}
+.slideshow-open .slideWrapper {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+.slideWrapper > div {
+  width: 660px;
+  height: 560px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  visibility: hidden;
+}
+.slideWrapper > div.show {
+  visibility: visible;
+}
+.slideWrapper > div:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+.slideWrapper > div.current:after {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, visibility 0s 0.3s;
+  transition: opacity 0.3s, visibility 0s 0.3s;
+}
+.slideshow figure {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border: 50px solid #fff;
+  overflow: hidden;
+}
+.slideshow figcaption {
+  padding-bottom: 20px;
+}
+.slideshow figcaption h3 {
+  font-weight: 300;
+  font-size: 200%;
+}
+/* Navigation */
+.slideshow nav span {
+  position: fixed;
+  z-index: 1000;
+  color: #fff;
+  text-align: center;
+  padding: 3%;
+  cursor: pointer;
+  font-size: 2.2em;
+}
+.slideshow nav span.nav-prev,
+.slideshow nav span.nav-next {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.slideshow nav span.nav-next {
+  right: 0;
+}
+.slideshow nav span.nav-close {
+  top: 0;
+  right: 0;
+  padding: 0.5em 1em;
+  color: #fff;
+}
+/* Info on arrow key navigation */
+.info-keys {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 60px;
+  font-size: 8px;
+  padding-top: 20px;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.info-keys:before,
+.info-keys:after {
+  position: absolute;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  border: 1px solid #fff;
+  text-align: center;
+  line-height: 14px;
+  font-size: 12px;
+}
+/* Example media queries (reduce number of columns and change slideshow layout) */
+@media screen and (max-width: 60em) {
+  /* responsive columns; see "Element sizing" on http://masonry.desandro.com/options.html */
+  .grid li {
+    width: 33.3%;
   }
-}
-@-moz-keyframes rotate {
-  to {
-    -moz-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@-webkit-keyframes "rotate" {
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@-ms-keyframes "rotate" {
-  to {
-    -ms-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-@-o-keyframes "rotate" {
-  to {
-    -o-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-
-#demo {
-    /* 最外围容器 */
-    width: 390px;
-    height: 484px;
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto;
-}
-.title, .infoWrapper, .subWrapper, .salesWrapper {
-    /* 定位的信息容器 */
-    position: absolute;
-    bottom: 0;
-    left: 0;
+  .slideshow li {
     width: 100%;
-    height: 80px;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+  .slideshow li figure img {
+    width: auto;
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  .slideshow nav span,
+  .slideshow nav span.nav-close {
+    font-size: 1.8em;
+    padding: 0.3em;
+  }
+  .info-keys {
+    display: none;
+  }
 }
-.hideMe {
-    /* 初始化隐藏销售和价格信息的容器，并在后面做transition动画 */
-    margin-bottom: -80px;
+@media screen and (max-width: 35em) {
+  .grid li {
+    width: 50%;
+  }
 }
-.subWrapper {
-    /* 为了做销量和价格的布局，改为relative多一层容器 */
-    position: relative;
+@media screen and (max-width: 24em) {
+  .grid li {
+    width: 100%;
+  }
 }
-.title {
-    /* 最底下的空容器，做背景色渐变动画以及blur高斯模糊滤镜，之所以单独是因为如果做opacity他的子元素也会都透明。
-     * 替代方案：RGBA
-     * */
-    background-color: #f60;
-    -webkit-transition: background-color .5s ease;
-    transition: background-color .5s ease;
-    opacity: 1;
-    -webkit-transition: opacity 0.3s ease-out;
-    transition: opacity 0.3s ease-out;
-}
-.infoWrapper a {
-    font-size: 16px;
-    color:#fff;
-    margin-left: 10px;
-    line-height: 80px;
-}
-/* 以下为hover之后的过渡动画，主要知识：animation-name & transition */
-#demo:hover .title {
-    opacity: 0.6;
-    -webkit-filter: blur(1px);
-    background: #f00;
-}
-#demo:hover .infoWrapper {
-    -webkit-animation-name: fadeOutRight;
-    animation-name: fadeOutRight;
-}
-#demo:hover .hideMe {
-    margin-bottom: 0;
-    -webkit-transition: magrin-bottom 0.3s ease-out .3s;
-    transition: margin-bottom 0.3s ease-out .3s;
-}
-#demo:hover .salesDelay {
-    bottom: 0;
-    -webkit-transition: bottom 0.3s ease-out 0.4s;
-    transition: bottom 0.3s ease-out 0.4s;
-}
-/* 销售信息和价格的布局样式 */
-.subWrapper .price {
-    font-size: 18px;
-    color: #fff;
-    line-height: 80px;
-    position: absolute;
-    left: 20px;
-}
-.subWrapper .price .icon {
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 80px;
-}
-.subWrapper .sales {
-    font-size: 14px;
-    color: #fff;
-    line-height: 80px;
-    position: absolute;
-    right: 20px;
-}
-.subWrapper .salesDelay {
-    bottom: -80px;
-}
-
