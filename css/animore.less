@@ -7,6 +7,7 @@ a {
 }
 .header {
     width: 23.5%;
+    min-width: 160px;
     height: 100%;
     min-height: 400px;
     position: fixed;
@@ -22,9 +23,72 @@ a {
         color: #fff;
     }
 }
+
+@-webkit-keyframes logo {    
+    0% {
+    visibility:visible;
+        background-position:0;
+    }
+    86% {
+       background-position:-160px 0;
+    }
+    93% {
+       background-position:-320px 0;
+    }
+    
+}
+@-moz-keyframes logo {    
+    0% {
+    visibility:visible;
+        background-position:0;
+    }
+    86% {
+       background-position:-160px 0;
+    }
+    93% {
+       background-position:-320px 0;
+    }
+    
+}
+@-o-keyframes logo {    
+    0% {
+    visibility:visible;
+        background-position:0;
+    }
+    86% {
+       background-position:-160px 0;
+    }
+    93% {
+       background-position:-320px 0;
+    }
+    
+}
+@keyframes logo {    
+    0% {
+    visibility:visible;
+        background-position:0;
+    }
+    86% {
+       background-position:-160px 0;
+    }
+    93% {
+       background-position:-320px 0;
+    }
+    
+}
+
 .logo {
-    height: 20%;
-    font-size: 42px;
+    width: 160px;
+    height: 26px;
+    display: inline-block;
+    background: url(../images/logo.png) no-repeat 0 0;
+    visibility:hidden;
+    -webkit-animation:logo 2000ms steps(1) infinite;
+    animation:logo 2000ms steps(1) infinite;
+}
+.logo:hover {
+    -webkit-animation:logo 1000ms steps(1) infinite;
+    animation:logo 1000ms steps(1) infinite;
 }
 .menu {
     font-size: 14px;
@@ -59,7 +123,7 @@ a {
 }
 .grid-gallery {
     margin-left: 23.5%;
-    padding: 20px 25px;
+    padding: 20px 0 20px 25px;
     .grid {
         li {
             width: 220px;
@@ -80,7 +144,7 @@ a {
         }
     }
 }
-.container {
+.main {
     overflow: hidden;
 }
 
