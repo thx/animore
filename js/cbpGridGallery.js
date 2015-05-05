@@ -171,6 +171,20 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 					var css = target.find('style').html() || EMPTY;
 					codePanel.find('.css').html(css);
 					
+					require(['ace'], function() {
+					    var editor = ace.edit("J_codePanel_html");
+					    editor.setTheme("ace/theme/github");
+					    editor.getSession().setMode("ace/mode/html");
+
+					    var editor = ace.edit("J_codePanel_css");
+					    editor.setTheme("ace/theme/github");
+					    editor.getSession().setMode("ace/mode/css");
+
+					    var editor = ace.edit("J_codePanel_javascript");
+					    editor.setTheme("ace/theme/github");
+					    editor.getSession().setMode("ace/mode/javascript");
+					});
+					
 					var container = target.find('.container');
 
 
@@ -191,21 +205,6 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 			codeList.hide();
 			var index = $(this).attr('index') || 0;
 			$(codeList[index]).show();
-
-		}).delegate('.tab-oper .edit', 'click', function(e) {
-			// require(['ace'], function() {
-			//     var editor = ace.edit("J_codePanel_html");
-			//     editor.setTheme("ace/theme/github");
-			//     editor.getSession().setMode("ace/mode/html");
-
-			//     var editor = ace.edit("J_codePanel_css");
-			//     editor.setTheme("ace/theme/github");
-			//     editor.getSession().setMode("ace/mode/css");
-
-			//     var editor = ace.edit("J_codePanel_javascript");
-			//     editor.setTheme("ace/theme/github");
-			//     editor.getSession().setMode("ace/mode/javascript");
-			// });
 
 		}).delegate('.tab-oper .run', 'click', function(e) {
 			var html = ace.edit("J_codePanel_html").getValue() || EMPTY;

@@ -22,7 +22,6 @@ require.config({
 });
 
 require(['jquery', 'cbpGridGallery', 'ini'], function($, cbpGridGallery, Ini) {
-	//$(document).ready(function() {
 		// 首页动效list渲染
 	    aniList('grid', 10, Ini.pageList);
 	    //菜单栏切换
@@ -37,8 +36,6 @@ require(['jquery', 'cbpGridGallery', 'ini'], function($, cbpGridGallery, Ini) {
 			_old = $(this);
 		});
 		
-	//});
-
 	function aniList(id, len, pageList) {
 		len = (pageList.length >= len) ? len : pageList.length;
 		var node = $('#' + id);
