@@ -50,7 +50,7 @@ require(['jquery', 'cbpGridGallery', 'ini'], function($, cbpGridGallery, Ini) {
 		node.append(str);
 		
 		for(var i = 0, j=0; i < len; i++) {
-			$('#J_grid_list' + i).load('tmpl/' + pageList[i] + '.html .container', [], function() {
+			$('#J_grid_list' + i).load('tmpl/' + pageList[i] + '.html .container', function() {
 				
 				j++;
 
