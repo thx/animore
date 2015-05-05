@@ -8,9 +8,9 @@
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
-;( function( window ) {
-	
+define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 	'use strict';
+	var EMPTY = '';
 
 	var docElem = window.document.documentElement,
 		transEndEventNames = {
@@ -93,21 +93,128 @@
 		});
 	};
 
+	function HTMLEnCode(str){       
+		var s = "";     
+		if(str.length == 0) return "";      
+		s = str.replace(/&/g, "&amp;");      
+		s = s.replace(/</g, "&lt;");      
+		s = s.replace(/>/g, "&gt;");       
+		//s = s.replace(/  /g, "&nbsp; ");       
+		return s; 
+	}
+
+	function prepareIframe (html, jsStr, cssStr) {
+		var preview = $('#J_preview');
+		var count = 0;
+		var write = function() {
+	        if (count > 3) { //重试4次后仍不成功
+				console.log('write error');
+				return;
+	        }
+	        try {
+			   	var doc = preview.prop('contentWindow').document;
+				doc.open();
+				var webUrl = 'http://' + location.host + location.pathname;
+				var str = '<!DOCTYPE html>\n<html><head><meta charset="utf-8"><link rel="stylesheet" type="text/css" href="' + webUrl + 'css/reset.css' + '"><script type="text/javascript" src="' + webUrl + 'js/libs/jquery-1.8.2.min.js"></script></head><body>';
+				str += '<style>' + cssStr + '</style>' + html + '<script type="text/javascript">' + jsStr + '</script></body></html>';
+				doc.write(str);
+				doc.close();
+
+	        } catch (e) {
+	          count++;
+	          preview.attr('src', 'about:blank');
+	        }
+        };
+		write();
+    }
+
 	CBPGridGallery.prototype._initEvents = function() {
 		var self = this;
 
 		// open the slideshow when clicking on the main grid items
 		this.gridItems.forEach( function( item, idx ) {
-			item.addEventListener( 'click', function() {
+			item.addEventListener( 'click', function(e) {
 				var me = self;
-				debugger
-				$('section.slideshow > .slideWrapper').load('tmpl/' + idx + '/' + idx + '.html #container', [], function() {
-					me.slideshowItems = [].slice.call( me.slideshow.children );
-					me._openSlideshow( idx );
+				var slideshow = me.slideshow;
+
+				var target = $(e.currentTarget);
+				var codePanel = $('.codePanel', slideshow.nextElementSibling);
+				var slideBar = $('.slideBar', slideshow.nextElementSibling);
+				var container = target.find('.container');
+				var jsUrl = container.attr('jsUrl') || EMPTY;
+				var width = container.width();
+				var height = container.height();
+				var jsStr = EMPTY;
+				var demoStr = target.children('figure').html();
+
+				if(!jsUrl) {
+					prepareIframe(demoStr);
+					showCode();
+					return;
+				}
+				
+
+				$.get(jsUrl, function(str) {
+					prepareIframe(demoStr, str);
+					showCode(str);
 				});
+				
+				function showCode(jsStr) {
+					$('#J_preview').css({'width': width, 'height': height, 'margin-top': -height/2+'px'}).parent('div').css('min-height', height);
+					me.slideshowItems = [].slice.call( slideshow.children );
+					me._openSlideshow( idx );
+
+					codePanel.find('.javascript').html(jsStr || EMPTY);
+					var html = target.find('.demo')[0].outerHTML || EMPTY;
+					codePanel.find('.html').html(HTMLEnCode(html));
+					
+					var css = target.find('style').html() || EMPTY;
+					codePanel.find('.css').html(css);
+					
+					var container = target.find('.container');
+
+
+					slideBar.find('.designer').html(container.attr('designer'));
+					slideBar.find('.developer').html(container.attr('developer'));
+					slideBar.find('.browser').html(container.attr('browser'));
+				}
 				
 			} );
 		} );
+
+
+		//代码tab切换
+		$('.slideshow .tab').delegate('.tab-i', 'click', function(e) {
+			$('.slideshow .tab .active').removeClass('active');
+			$(this).addClass('active');
+			var codeList = $('.slideshow .codePanel .code-i');
+			codeList.hide();
+			var index = $(this).attr('index') || 0;
+			$(codeList[index]).show();
+
+		}).delegate('.tab-oper .edit', 'click', function(e) {
+			// require(['ace'], function() {
+			//     var editor = ace.edit("J_codePanel_html");
+			//     editor.setTheme("ace/theme/github");
+			//     editor.getSession().setMode("ace/mode/html");
+
+			//     var editor = ace.edit("J_codePanel_css");
+			//     editor.setTheme("ace/theme/github");
+			//     editor.getSession().setMode("ace/mode/css");
+
+			//     var editor = ace.edit("J_codePanel_javascript");
+			//     editor.setTheme("ace/theme/github");
+			//     editor.getSession().setMode("ace/mode/javascript");
+			// });
+
+		}).delegate('.tab-oper .run', 'click', function(e) {
+			var html = ace.edit("J_codePanel_html").getValue() || EMPTY;
+			var css = ace.edit("J_codePanel_css").getValue() || EMPTY;
+			var js = ace.edit("J_codePanel_javascript").getValue() || EMPTY;
+			
+			prepareIframe(html, js, css);
+
+		});
 
 		// slideshow controls
 		//this.ctrlPrev.addEventListener( 'click', function() { self._navigate( 'prev' ); } );
@@ -193,7 +300,7 @@
 			// positions for the centered/current item, both the side items and the incoming ones
 			transformLeftStr = support.support3d ? 'translate3d(-' + Number( getViewportW() / 2 + itemWidth / 2 ) + 'px, 0, -150px)' : 'translate(-' + Number( getViewportW() / 2 + itemWidth / 2 ) + 'px)',
 			transformRightStr = support.support3d ? 'translate3d(' + Number( getViewportW() / 2 + itemWidth / 2 ) + 'px, 0, -150px)' : 'translate(' + Number( getViewportW() / 2 + itemWidth / 2 ) + 'px)',
-			transformCenterStr = '', transformOutStr, transformIncomingStr,
+			transformCenterStr = EMPTY, transformOutStr, transformIncomingStr,
 			// incoming item
 			incomingItem;
 
@@ -306,7 +413,7 @@
 				}
 
 				// also reset any transforms for all the items
-				self.slideshowItems.forEach( function( item ) { setTransform( item, '' ); } );
+				self.slideshowItems.forEach( function( item ) { setTransform( item, EMPTY ); } );
 
 				self.isSlideshowVisible = false;
 			};
@@ -331,6 +438,7 @@
 			this.nextItem = this.slideshowItems[ this.current + 1 ];
 		}*/
 		this.currentItem = this.slideshowItems[0];
+
 	}
 
 	// taken from https://github.com/desandro/vanilla-masonry/blob/master/masonry.js by David DeSandro
@@ -365,4 +473,4 @@
 	// add to global namespace
 	window.CBPGridGallery = CBPGridGallery;
 
-})( window );
+});

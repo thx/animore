@@ -9,11 +9,10 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/animore.css">
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/modernizr.custom.js"></script>
+    <script src="js/libs/require.js"></script>
+    <script src="js/animore.js"></script>
   </head>
   <body>
-
   <div class="container">
 	<header class="header">
 		<table>
@@ -68,7 +67,34 @@
 		</section><!-- // grid-wrap -->
 
 		<section class="slideshow">
-			<div class="slideWrapper"></div>
+			<div class="slideWrapper">
+				<iframe src="" frameborder="0" id="J_preview"></iframe>
+			</div>
+			<div class="slidePanel">
+				<div class="slideBar">
+					<ul class="tab">
+						<li index="0" class="tab-i active">HTML</li>
+						<li index="1" class="tab-i">CSS</li>
+						<li index="2" class="tab-i">JavaScript</li>
+						<li class="tab-note"><span>设计：<a class="designer"></a></span><span>开发：<a class="developer"></a></span><span>兼容：<a class="browser"></a></span></li>
+						<li class="tab-oper">
+							<!-- <span class="edit">编 辑</span> -->
+							<span class="run">运行</span>
+						</li>
+					</ul>
+				</div>
+				<ul class="codePanel">
+					<li class="code-i" id="J_codePanel_html">
+						<pre class="html"></pre>
+					</li>
+					<li class="code-i" id="J_codePanel_css">
+						<pre class="css"></pre>
+					</li>
+					<li class="code-i" id="J_codePanel_javascript">
+						<pre class="javascript"></pre>
+					</li>
+				</ul>
+			</div>
 			<nav>
 				<span class="icon nav-close">X</span>
 			</nav>
@@ -77,37 +103,5 @@
 
 	</div><!-- // grid-gallery -->
 </div>
-    <script src="js/masonry.pkgd.min.js"></script>
-	<script src="js/classie.js"></script>
-	<script src="js/cbpGridGallery.js"></script>
-    <script src="js/animore.js"></script>
-    <script>
-
-	    aniList('grid', 10);
-
-    	function aniList(id, len) {
-			var node = $('#' + id);
-			var str = '<li class="grid-sizer"></li>';
-			node.css('display', 'none');
-			for(var i = 1; i <= len; i++) {
-				str += '<li><figure id="J_grid_list' + i + '"></figure></li>';
-			}
-			node.append(str);
-
-			for(var i = 1, j=0; i < len; i++) {
-				$('#J_grid_list' + i).load('tmpl/' + i + '/' + i + '.html #container', [], function() {
-					j++;
-					isLoaded(j, len);					
-				});
-			}
-				node.css('display', 'block');
-
-		}
-		function isLoaded (j, len) {
-			if(j == len-1) {
-				new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
-			}
-		}
-    </script>
   </body>
 </html>

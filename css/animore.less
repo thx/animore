@@ -59,7 +59,7 @@ a {
 }
 .grid-gallery {
     margin-left: 300px;
-    padding: 45px 60px;
+    padding: 20px 25px;
     .grid {
         li {
             width: 220px;
@@ -80,11 +80,14 @@ a {
         }
     }
 }
+.container {
+    overflow: hidden;
+}
 
 /* Slideshow style */
 .slideshow {
     position: fixed;
-    background: rgba(0,0,0,0.6);
+    background: #2F8DE5;
     width: 100%;
     height: 100%;
     top: 0;
@@ -106,9 +109,36 @@ a {
     transition: opacity 0.5s;
 }
 
-.slideWrapper {
+.slidePanel {
+    height: 40%;
+}
+
+.slideBar {
+    height: 33px;
+    line-height: 33px;
+    padding: 0 12%;
+    color: #fff;
+    background: #277FD6;
+}
+.codePanel {
+    height: 100%;
+    overflow: auto;
+    padding: 0 12%;
+    background: #fff;
+}
+.codePanel > .code-i {
+    display: none;
     width: 100%;
     height: 100%;
+}
+.codePanel > .code-i:first-child {
+    display: block;
+}
+
+.slideWrapper {
+    width: 100%;
+    height: 60%;
+    text-align: center;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     -webkit-transform: translate3d(0,0,150px);
@@ -127,57 +157,12 @@ a {
     transform: translate3d(0,0,0);
 }
 
-.slideWrapper > div {
-    width: 660px;
-    height: 560px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    visibility: hidden;
+#J_preview {
+    display: inline-block;
+    position: relative;
+    top: 50%;
 }
 
-.slideWrapper > div.show {
-    visibility: visible;
-}
-
-.slideWrapper > div:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background: rgba(255,255,255,0.8);
-    -webkit-transition: opacity 0.3s;
-    transition: opacity 0.3s;
-}
-
-.slideWrapper > div.current:after {
-    visibility: hidden;
-    opacity: 0;
-    -webkit-transition: opacity 0.3s, visibility 0s 0.3s;
-    transition: opacity 0.3s, visibility 0s 0.3s;
-}
-
-.slideshow figure {
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    border: 50px solid #fff;
-    overflow: hidden;
-}
-
-.slideshow figcaption {
-    padding-bottom: 20px;
-}
-
-.slideshow figcaption h3 {
-    font-weight: 300;
-    font-size: 200%;
-}
 
 /* Navigation */
 .slideshow nav span {
@@ -208,7 +193,42 @@ a {
     color: #fff;
 }
 
-
+.tab {
+    font-size: 14px;
+}
+.tab .tab-i {
+    width: 80px;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+}
+.tab .active {
+    background: #fff;
+    color: #2780d6;
+}
+.tab .tab-note {
+    margin-left: 100px;
+    display: inline-block;
+    font-size: 12px;
+}
+.tab .tab-note > span {
+    margin-left: 20px;
+}
+.tab .tab-note > span:first-child {
+    margin-left: 0;
+}
+.tab .tab-oper {
+    float: right;
+}
+.tab .tab-oper > span {
+    padding: 0 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    display: inline-block;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
 
 /* Info on arrow key navigation */
 .info-keys {

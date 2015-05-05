@@ -5,9 +5,61 @@
     <title>动态效果CSS3库-09</title>
 </head>
 <body>
-    <div id="container" style="width: 190px;height: 190px;">
-		<link rel="stylesheet" type="text/css" href="tmpl/2/2.css">
-		<div class="icon-wrapper"><div class="circle-half"></div></div>
+    <div class="container" style="width: 190px;height: 190px;" designer="辉达" developer="思竹" browser="Chrome、Firefox、Safari">
+   		<style>
+.icon-wrapper {
+    background: #7190C7;
+    padding: 45px;
+    line-height: 0;
+}
+.circle-half {
+  width: 60px;
+  height: 60px;
+  border: 20px solid;
+  border-color: #ffffff #ffffff transparent transparent;
+  border-radius: 50%;
+	-webkit-animation: rotate 1.2s infinite linear;
+	-moz-animation: rotate 1.2s infinite linear;
+	-ms-animation: rotate 1.2s infinite linear;
+	-o-animation: rotate 1.2s infinite linear;
+}
+@keyframes "rotate" {
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes rotate {
+  to {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes "rotate" {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes "rotate" {
+  to {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes "rotate" {
+  to {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+   		</style>
+      <div class="demo">
+        <div class="icon-wrapper"><div class="circle-half"></div></div>
+      </div>
 	</div>
 </body>
 </html>

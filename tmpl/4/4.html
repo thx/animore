@@ -1,13 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>动态效果CSS3库-09</title>
 </head>
+
 <body>
-    <div id="container" style="width: 190px;height: 190px;">
-		<link rel="stylesheet" type="text/css" href="tmpl/4/4.css">
-		<div class="icon-wrapper"><div class="heart"></div></div>
-	</div>
+    <div class="container" style="width: 190px;height: 190px;">
+        <style>
+        .heart {
+            position: relative;
+            width: 100px;
+            height: 90px;
+        }
+        
+        .heart:before,
+        .heart:after {
+            content: '';
+            width: 50px;
+            height: 80px;
+            left: 0;
+            top: 0;
+            position: absolute;
+            background: #ffffff;
+            border-radius: 50px 50px 0 0;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            -webkit-transform-origin: right bottom;
+            /* 以右下角为基点旋转 */
+            
+            -moz-transform-origin: right bottom;
+            -ms-transform-origin: right bottom;
+            -o-transform-origin: right bottom;
+            transform-origin: right bottom;
+        }
+        
+        .heart:after {
+            left: 50px;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            -webkit-transform-origin: left bottom;
+            /* 以左下角为基点旋转 */
+            
+            -moz-transform-origin: left bottom;
+            -ms-transform-origin: left bottom;
+            -o-transform-origin: left bottom;
+            transform-origin: left bottom;
+        }
+        </style>
+        <div class="icon-wrapper">
+            <div class="heart"></div>
+        </div>
+    </div>
 </body>
+
 </html>
