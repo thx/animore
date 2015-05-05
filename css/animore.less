@@ -6,7 +6,7 @@ a {
     outline: none;
 }
 .header {
-    width: 300px;
+    width: 23.5%;
     height: 100%;
     min-height: 400px;
     position: fixed;
@@ -42,11 +42,11 @@ a {
         *display: inline;
         border-radius: 50%;
         opacity: 0;
-        .transition(opacity);
     }
     .active {
         a:before, a:after {
             opacity: 1;
+            .transition(opacity .2s linear);
         }
     }
 }
@@ -58,7 +58,7 @@ a {
     }
 }
 .grid-gallery {
-    margin-left: 300px;
+    margin-left: 23.5%;
     padding: 20px 25px;
     .grid {
         li {
@@ -187,10 +187,28 @@ a {
 }
 
 .slideshow nav span.nav-close {
-    top: 0;
-    right: 0;
-    padding: 0.5em 1em;
-    color: #fff;
+    top: 1em;
+    right: 1em;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+}
+.slideshow nav span.nav-close:before,
+.slideshow nav span.nav-close:after {
+  content: '';
+  display: inline-block;
+  width: 28px;
+  height: 1px;
+  right: 0;
+  top: 10px;
+  position: absolute;
+  background: #fff;
+}
+.slideshow nav span.nav-close:before {
+  .rotate(45deg);
+}
+.slideshow nav span.nav-close:after {
+  .rotate(-45deg);
 }
 
 .tab {
