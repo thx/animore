@@ -1,7 +1,7 @@
 define(function() {
 	var pageList = [
-		'1/1',
-		'2/2',
+		'yh/em-1',
+		'mz/mz-circle-half',
 		'3/3',
 		'4/4',
 		'5/5',

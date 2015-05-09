@@ -6,27 +6,24 @@
     <title>动态效果CSS3库-09</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="09.css">
     <script src="js/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="container" jsUrl="tmpl/1/1.js" designer="辉达" developer="思竹" browser="Chrome、Firefox、Safari" style="width: 190px;height: 236px;">
+    <div class="container" jsUrl="yh/em-1" designer="俄木" developer="羽昊" browser="Chrome、Firefox、Safari">
         <style type="text/css">
-        #demo1 {
+        .sz-hd-1 {
             /* 最外围容器 */
-            
-            width: 190px;
             height: 236px;
             overflow: hidden;
             position: relative;
             margin: 0 auto;
         }
         
-        #demo1 .title,
-        #demo1 .infoWrapper,
-        #demo1 .subWrapper,
-        #demo1 .salesWrapper {
+        .sz-hd-1 .title,
+        .sz-hd-1 .infoWrapper,
+        .sz-hd-1 .subWrapper,
+        .sz-hd-1 .salesWrapper {
             /* 定位的信息容器 */
             
             position: absolute;
@@ -36,19 +33,19 @@
             height: 80px;
         }
         
-        #demo1 .hideMe {
+        .sz-hd-1 .hideMe {
             /* 初始化隐藏销售和价格信息的容器，并在后面做transition动画 */
             
             margin-bottom: -80px;
         }
         
-        #demo1 .subWrapper {
+        .sz-hd-1 .subWrapper {
             /* 为了做销量和价格的布局，改为relative多一层容器 */
             
             position: relative;
         }
         
-        #demo1 .title {
+        .sz-hd-1 .title {
             /* 最底下的空容器，做背景色渐变动画以及blur高斯模糊滤镜，之所以单独是因为如果做opacity他的子元素也会都透明。
      * 替代方案：RGBA
      * */
@@ -61,7 +58,7 @@
             transition: opacity 0.3s ease-out;
         }
         
-        #demo1 .infoWrapper a {
+        .sz-hd-1 .infoWrapper a {
             font-size: 16px;
             color: #fff;
             margin-left: 10px;
@@ -69,31 +66,31 @@
         }
         /* 以下为hover之后的过渡动画，主要知识：animation-name & transition */
         
-        #demo1:hover .title {
+        .sz-hd-1:hover .title {
             opacity: 0.6;
             -webkit-filter: blur(1px);
             background: #f00;
         }
         
-        #demo1:hover .infoWrapper {
+        .sz-hd-1:hover .infoWrapper {
             -webkit-animation-name: fadeOutRight;
             animation-name: fadeOutRight;
         }
         
-        #demo1:hover .hideMe {
+        .sz-hd-1:hover .hideMe {
             margin-bottom: 0;
             -webkit-transition: magrin-bottom 0.3s ease-out .3s;
             transition: margin-bottom 0.3s ease-out .3s;
         }
         
-        #demo1:hover .salesDelay {
+        .sz-hd-1:hover .salesDelay {
             bottom: 0;
             -webkit-transition: bottom 0.3s ease-out 0.4s;
             transition: bottom 0.3s ease-out 0.4s;
         }
         /* 销售信息和价格的布局样式 */
         
-        #demo1 .subWrapper .price {
+        .sz-hd-1 .subWrapper .price {
             font-size: 18px;
             color: #fff;
             line-height: 80px;
@@ -101,13 +98,13 @@
             left: 20px;
         }
         
-        #demo1 .subWrapper .price .icon {
+        .sz-hd-1 .subWrapper .price .icon {
             font-size: 14px;
             font-weight: normal;
             line-height: 80px;
         }
         
-        #demo1 .subWrapper .sales {
+        .sz-hd-1 .subWrapper .sales {
             font-size: 14px;
             color: #fff;
             line-height: 80px;
@@ -115,12 +112,12 @@
             right: 20px;
         }
         
-        #demo1 .subWrapper .salesDelay {
+        .sz-hd-1 .subWrapper .salesDelay {
             bottom: -80px;
         }
         </style>
 
-        <div class="demo" id="demo1">
+        <div class="sz-hd-1">
             <img src="http://g.ald.alicdn.com/bao/uploaded/TB1n5uqGVXXXXcSXFXXSutbFXXX.jpg" width="390" height="484" alt="" class="production">
             <div class="title"></div>
             <div class="infoWrapper animated">
@@ -133,7 +130,6 @@
                 </div>
             </div>
         </div>
-        <script type="text/javascript">alert(22);</script>
     </div>
 </body>
 

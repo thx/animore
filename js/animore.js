@@ -12,7 +12,7 @@ require.config({
         cbpGridGallery: 'cbpGridGallery',
         classie: 'libs/classie',
         ace: 'ace/ace',
-        ini: 'ini',
+        ini: '../ini',
         animore: 'animore'
     },
     shim: {
@@ -53,8 +53,10 @@ require(['jquery', 'cbpGridGallery', 'ini'], function($, cbpGridGallery, Ini) {
 
 				var jsUrl = $(this).children('.container').attr('jsUrl') || '';
 				if(jsUrl) {
-					$.get(jsUrl);
+					$.get('tmpl/' + jsUrl + '.js');
 				}
+				//$(this).children('.container')[0].style.cssText = '';
+				$(this).children('.container').attr('class', 'ctnr');
 				if(j == len) {
 					new CBPGridGallery( document.getElementById( 'grid-gallery' ) );
 				}

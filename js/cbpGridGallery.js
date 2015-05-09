@@ -140,10 +140,10 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 				var target = $(e.currentTarget);
 				var codePanel = $('.codePanel', slideshow.nextElementSibling);
 				var slideBar = $('.slideBar', slideshow.nextElementSibling);
-				var container = target.find('.container');
-				var jsUrl = container.attr('jsUrl') || EMPTY;
-				var width = container.width();
-				var height = container.height();
+				var ctnr = target.find('.ctnr');
+				var jsUrl = ctnr.attr('jsUrl') || EMPTY;
+				var width = ctnr.width();
+				var height = ctnr.height();
 				var jsStr = EMPTY;
 				var demoStr = target.children('figure').html();
 
@@ -154,7 +154,7 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 				}
 				
 
-				$.get(jsUrl, function(str) {
+				$.get('tmpl/' + jsUrl + '.js', function(str) {
 					prepareIframe(demoStr, str);
 					showCode(str);
 				});
@@ -165,10 +165,19 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 					me._openSlideshow( idx );
 
 					codePanel.find('.javascript').html(jsStr || EMPTY);
-					var html = target.find('.demo')[0].outerHTML || EMPTY;
+					
+					var html = EMPTY;
+					var node = target.find('.ctnr').children();
+					var styleNode = target.find('style');
+					if(node[0] == styleNode[0]) {
+						html = $(node)[1].outerHTML;
+					}else {
+						html = $(node)[0].outerHTML;
+					}
+
 					codePanel.find('.html').html(HTMLEnCode(html));
 					
-					var css = target.find('style').html() || EMPTY;
+					var css = styleNode.html() || EMPTY;
 					codePanel.find('.css').html(css);
 					
 					require(['ace'], function() {
@@ -185,12 +194,12 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 					    editor.getSession().setMode("ace/mode/javascript");
 					});
 					
-					var container = target.find('.container');
+					var ctnr = target.find('.ctnr');
 
 
-					slideBar.find('.designer').html(container.attr('designer'));
-					slideBar.find('.developer').html(container.attr('developer'));
-					slideBar.find('.browser').html(container.attr('browser'));
+					slideBar.find('.designer').html(ctnr.attr('designer'));
+					slideBar.find('.developer').html(ctnr.attr('developer'));
+					slideBar.find('.browser').html(ctnr.attr('browser'));
 				}
 				
 			} );

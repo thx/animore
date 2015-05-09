@@ -87,8 +87,8 @@ a {
     animation:logo 2000ms steps(1) infinite;
 }
 .logo:hover {
-    -webkit-animation:logo 1000ms steps(1) infinite;
-    animation:logo 1000ms steps(1) infinite;
+    -webkit-animation-duration: 800ms;
+    animation-duration: 800ms;
 }
 .menu {
     font-size: 14px;
@@ -131,7 +131,8 @@ a {
             cursor: pointer;
         }
         figure {
-            padding: 15px;
+            margin: 15px;
+            overflow: hidden;
             -webkit-transition: opacity 0.2s;
             transition: opacity 0.2s;
         }
