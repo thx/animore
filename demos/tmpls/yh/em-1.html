@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态效果CSS3库-09</title>
+    <link rel="stylesheet" href="http://g.tbcdn.cn/thx/cube/1.2.1/cube-min.css">
+    <style type="text/css">
+        .sz-hd-1 {
+            /* 最外围容器 */
+            height: 236px;
+            overflow: hidden;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .sz-hd-1 .title,
+        .sz-hd-1 .infoWrapper,
+        .sz-hd-1 .subWrapper,
+        .sz-hd-1 .salesWrapper {
+            /* 定位的信息容器 */
+            
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 80px;
+        }
+        
+        .sz-hd-1 .hideMe {
+            /* 初始化隐藏销售和价格信息的容器，并在后面做transition动画 */
+            
+            margin-bottom: -80px;
+        }
+        
+        .sz-hd-1 .subWrapper {
+            /* 为了做销量和价格的布局，改为relative多一层容器 */
+            
+            position: relative;
+        }
+        
+        .sz-hd-1 .title {
+            /* 最底下的空容器，做背景色渐变动画以及blur高斯模糊滤镜，之所以单独是因为如果做opacity他的子元素也会都透明。
+     * 替代方案：RGBA
+     * */
+            
+            background-color: #f60;
+            -webkit-transition: background-color .5s ease;
+            transition: background-color .5s ease;
+            opacity: 1;
+            -webkit-transition: opacity 0.3s ease-out;
+            transition: opacity 0.3s ease-out;
+        }
+        
+        .sz-hd-1 .infoWrapper a {
+            font-size: 16px;
+            color: #fff;
+            margin-left: 10px;
+            line-height: 80px;
+        }
+        /* 以下为hover之后的过渡动画，主要知识：animation-name & transition */
+        
+        .sz-hd-1:hover .title {
+            opacity: 0.6;
+            -webkit-filter: blur(1px);
+            background: #f00;
+        }
+        
+        .sz-hd-1:hover .infoWrapper {
+            -webkit-animation-name: fadeOutRight;
+            animation-name: fadeOutRight;
+        }
+        
+        .sz-hd-1:hover .hideMe {
+            margin-bottom: 0;
+            -webkit-transition: magrin-bottom 0.3s ease-out .3s;
+            transition: margin-bottom 0.3s ease-out .3s;
+        }
+        
+        .sz-hd-1:hover .salesDelay {
+            bottom: 0;
+            -webkit-transition: bottom 0.3s ease-out 0.4s;
+            transition: bottom 0.3s ease-out 0.4s;
+        }
+        /* 销售信息和价格的布局样式 */
+        
+        .sz-hd-1 .subWrapper .price {
+            font-size: 18px;
+            color: #fff;
+            line-height: 80px;
+            position: absolute;
+            left: 20px;
+        }
+        
+        .sz-hd-1 .subWrapper .price .icon {
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 80px;
+        }
+        
+        .sz-hd-1 .subWrapper .sales {
+            font-size: 14px;
+            color: #fff;
+            line-height: 80px;
+            position: absolute;
+            right: 20px;
+        }
+        
+        .sz-hd-1 .subWrapper .salesDelay {
+            bottom: -80px;
+        }
+        </style>
+</head>
+
+<body>
+    <div id="container" designer="俄木" developer="羽昊" browser="Chrome、Firefox、Safari" style="width:220px;height:250px;">
+        <div class="sz-hd-1">
+            <img src="http://g.ald.alicdn.com/bao/uploaded/TB1n5uqGVXXXXcSXFXXSutbFXXX.jpg" width="390" height="484" alt="" class="production">
+            <div class="title"></div>
+            <div class="infoWrapper animated">
+                <a href="">2014秋冬款韩版修身格子毛呢外套中长款</a>
+            </div>
+            <div class="salesWrapper hideMe animated">
+                <div class="subWrapper">
+                    <span class="price"><strong class="icon rmb">￥</strong> 3810.00</span>
+                    <span class="sales salesDelay">销量：2394</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        console.log(1);
+        //alert(1);
+    </script>
+</body>
+
+</html>

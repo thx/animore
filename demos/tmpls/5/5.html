@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>动态效果CSS3库-09</title>
+</head>
+
+<body>
+    <div class="container" style="width: 190px;height: 190px;">
+        <style>
+        .wrapper {
+            width: 190px;
+            height: 190px;
+            overflow: hidden;
+            /*box-shadow: 0 0 4px red;*/
+            
+            background-color: #FFF;
+            position: relative;
+        }
+        
+        .item-con {
+            -webkit-transition: margin-left 0.6s;
+        }
+        
+        .wrapper .item {
+            -webkit-transition: all 0.4s ease-in-out;
+            width: 100%;
+            height: 100%;
+            float: left;
+            opacity: 0;
+        }
+        
+        .wrapper .item.crt {
+            opacity: 1;
+        }
+        
+        .wrapper .operator {
+            position: absolute;
+            top: 44%;
+            -webkit-transition: all .4s ease-in-out .1s;
+            cursor: pointer;
+        }
+        
+        .wrapper .operator .arrow {
+            width: 50px;
+            height: 50px;
+            border-top: 1px solid #ff00d2;
+            border-right: 1px solid #ff00d2;
+            opacity: 0;
+            -webkit-transition: all .15s ease-in-out .1s;
+            -webkit-transform: rotateZ(45deg);
+        }
+        
+        .wrapper img {
+            -webkit-transition: all .5s .1s;
+        }
+        
+        .wrapper .left {
+            left: 20px;
+            margin-left: -130px;
+        }
+        
+        .wrapper .right {
+            right: 20px;
+            margin-right: -130px;
+        }
+        
+        .wrapper .left .arrow {
+            -webkit-transform: rotateZ(-135deg);
+        }
+        
+        .wrapper .description {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            opacity: 0;
+            background-color: rgba(255, 255, 255, .8);
+            -webkit-transition: all .6s .3s;
+        }
+        
+        .wrapper .description .text-con {
+            position: absolute;
+            left: 30%;
+            top: 40%;
+        }
+        
+        .wrapper .description .price {
+            color: #ff00d2;
+            font-size: 30px;
+            margin-left: -7px;
+        }
+        
+        .wrapper .description .count {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .wrapper:hover .item {
+            /*-webkit-transform: scale(.5, .5);*/
+        }
+        
+        .wrapper:hover .description {
+            opacity: 1;
+        }
+        
+        .wrapper:hover .left {
+            margin-left: 0;
+        }
+        
+        .wrapper:hover .left .arrow {
+            opacity: .3;
+        }
+        
+        .wrapper .left .arrow:hover {
+            opacity: 1;
+        }
+        
+        .wrapper:hover img {
+            -webkit-filter: blur(4px);
+            /* Chrome, Opera */
+            
+            -moz-filter: blur(4px);
+            -ms-filter: blur(4px);
+            filter: blur(4px);
+        }
+        
+        .wrapper:hover .right {
+            margin-right: 0;
+        }
+        
+        .wrapper:hover .right .arrow {
+            opacity: .3;
+        }
+        
+        .wrapper .right .arrow:hover {
+            opacity: 1;
+        }
+        
+        .wrapper.reverse .description {
+            background-color: rgba(255, 0, 210, .5);
+        }
+        
+        .wrapper.reverse .description .price {
+            color: #FFF;
+        }
+        
+        .wrapper.reverse .description .count {
+            color: #FFF;
+        }
+        
+        .wrapper.reverse .operator .arrow {
+            border-top-color: #FFF;
+            border-right-color: #FFF;
+            opacity: 1;
+        }
+        
+        .wrapper .indicator {
+            position: absolute;
+            bottom: 20px;
+            left: 120px;
+            width: 60px;
+            height: 60px;
+            background-color: #ff00d2;
+            border-radius: 50%;
+            color: #fff;
+            text-align: center;
+            opacity: 0;
+            -webkit-transition: all .4s .2s;
+        }
+        
+        .wrapper.reverse .indicator {
+            background-color: #FFF;
+            color: #ff00d2;
+        }
+        
+        .wrapper:hover .indicator {
+            opacity: 1;
+        }
+        
+        .wrapper .indicator .current {
+            float: left;
+            margin-left: 4px;
+            display: inline-block;
+            font-size: 24px;
+            margin-top: 13px;
+            width: 28px;
+            height: 31px;
+            overflow: hidden;
+            text-align: right;
+        }
+        
+        .wrapper .indicator .current .numbers {
+            -webkit-transition: all .4s ease-in;
+        }
+        
+        .wrapper .indicator .total {
+            float: left;
+            margin-top: 16px;
+            display: inline-block;
+            font-size: 12px;
+            text-align: left;
+        }
+        </style>
+        <div class="wrapper">
+            <div class="item-con" style="width: 900px;">
+                <div class="item crt">
+                    <div><img src="tmpl/5/imgs/girl.png" width="300" height="300" /></div>
+                    <div class="description">
+                        <div class="text-con">
+                            <div class="price">￥312.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div><img src="tmpl/5/imgs/girl-2.png" width="300" height="300" /></div>
+                    <div class="description">
+                        <div class="text-con">
+                            <div class="price">￥99.00</div>
+                            <div class="count">销量 : 1232</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div><img src="tmpl/5/imgs/girl-3.png" width="300" height="300" /></div>
+                    <div class="description">
+                        <div class="text-con">
+                            <div class="price">￥300.00</div>
+                            <div class="count">销量 : 444</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="indicator">
+                <div class="current">
+                    <div class="numbers">
+                        <div>1</div>
+                        <div>18</div>
+                        <div>19</div>
+                    </div>
+                </div>
+                <div class="total">/20</div>
+            </div>
+            <div class="operator left">
+                <div class="arrow"></div>
+            </div>
+            <div class="operator right">
+                <div class="arrow"></div>
+            </div>
+        </div>
+        <input type="button" value="切换动效皮肤" />
+        <script type="text/javascript">
+        var wrapper = document.querySelector('.wrapper');
+
+        function changeView() {
+            wrapper.classList.contains('reverse') ?
+                wrapper.classList.remove('reverse') :
+                wrapper.classList.add('reverse')
+        }
+        document.querySelector('[type=button]').onclick = changeView;
+
+        var index = 0;
+        var con = document.querySelector('.item-con');
+        var items = document.querySelectorAll('.item');
+        var indicatorNums = document.querySelector('.indicator .numbers');
+        document.querySelector('.left').onclick = function() {
+            if (index <= 0) {
+                return;
+            }
+            items[index].classList.remove('crt');
+            index--;
+            items[index].classList.add('crt');
+            con.style.marginLeft = -index * 300 + 'px';
+            indicatorNums.style.marginTop = -index * 32 + 'px';
+        }
+        document.querySelector('.right').onclick = function() {
+            if (index >= items.length - 1) {
+                return;
+            }
+            items[index].classList.remove('crt');
+            index++;
+            items[index].classList.add('crt');
+            con.style.marginLeft = -index * 300 + 'px';
+            indicatorNums.style.marginTop = -index * 32 + 'px';
+        }
+        </script>
+    </div>
+</body>
+
+</html>
