@@ -83,27 +83,10 @@ require(['jquery', 'cbpGridGallery'], function($, cbpGridGallery) {
 		
 	function aniList(str, len) {
 		var node = $('#grid');
-		var j = 0;
-		//var tmplsList = [];
-		
+		var j = 0;		
 
 		node.append('<li class="grid-sizer"></li>' + str);
 		
-		// $.each(tmplsList, function(index, item) {
-		// 	$('#J_grid_list' + item).load(pageList[item] + ' .container', function() {
-			
-		// 		j++;
-		// 		var jsUrl = $(this).children('.container').attr('jsUrl') || '';
-		// 		if(jsUrl) {
-		// 			$.get('tmpl/' + jsUrl + '.js');
-		// 		}
-		// 		//$(this).children('.container')[0].style.cssText = '';
-		// 		$(this).children('.container').attr('class', 'ctnr');
-
-		// 		newList(j, len);
-				
-		// 	});
-		// });
 		$("img", node).on('load', function() {
 	  		j++;
 	  		newList(j, len);
