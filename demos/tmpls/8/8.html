@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态效果CSS3库-09</title>
+</head>
+<body>
+    <div class="container" style="width: 190px;height: 190px;">
+		<link rel="stylesheet" type="text/css" href="tmpl/8/8.css">
+		<div class="wrapper">
+            <div class="item-con" style="width: 190px;">
+                <div class="item crt">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2014秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3152.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag-2.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2013秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3112.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item crt">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2014秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3152.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag-2.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2013秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3112.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item crt">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2014秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3152.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag-2.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2013秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3112.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item crt">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2014秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3152.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="image-con">
+                        <img src="tmpl/8/imgs/bag-2.png" width="300" height="200"/>
+                    </div>
+                    <div class="description">
+                        <div class="detail">
+                            2013秋冬新款韩版修身格子毛呢
+                        </div>
+                        <div class="text-con">
+                            <div class="price">￥3112.00</div>
+                            <div class="count">销量 : 111</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="indicator">
+                <div class="current">
+                    <div class="numbers">
+                        <div>1</div>
+                        <div>18</div>
+                        <div>19</div>
+                        <div>20</div>
+                        <div>1</div>
+                        <div>18</div>
+                        <div>19</div>
+                        <div>20</div>
+                    </div>
+                </div>
+                <div class="total">/20</div>
+            </div>
+            <div class="operator left">
+                <div class="arrow"></div>
+            </div>
+            <div class="operator right">
+                <div class="arrow"></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+            var done = true;
+            function clean() {
+                if (done) {
+                    return;
+                }
+                done = true;
+                items = document.querySelectorAll('.item');
+                wrapper.classList.remove('anmt');
+                parentNode.appendChild(items[0]);
+            }
+            var index = 0;
+            var con = document.querySelector('.item-con');
+            var wrapper = document.querySelector('.wrapper');
+            var items = document.querySelectorAll('.item');
+            var parentNode = items[0].parentNode;
+            
+            var indicatorNums = document.querySelector('.indicator .numbers');
+            document.querySelector('.left').onclick = function() {
+                index --;
+                indicatorNums.style.marginTop = - index * 32 + 'px';
+            }
+
+            for(var i = 0; i < items.length; i++) {
+                items[i].addEventListener('webkitAnimationEnd', clean);
+            }
+            
+
+            document.querySelector('.right').onclick = function() {
+                done = false;
+                wrapper.classList.add('anmt');
+                index ++;
+                indicatorNums.style.marginTop = - index * 32 + 'px';
+            }
+        </script>
+	</div>
+</body>
+</html>

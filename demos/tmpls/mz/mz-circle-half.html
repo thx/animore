@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动态效果CSS3库-09</title>
+
+      <style>
+.mz-mz-circle-half .icon-wrapper {
+    background: #7190C7;
+    padding: 45px;
+    line-height: 0;
+}
+.mz-mz-circle-half .circle-half {
+  width: 60px;
+  height: 60px;
+  border: 20px solid;
+  border-color: #ffffff #ffffff transparent transparent;
+  border-radius: 50%;
+  -webkit-animation: mz-mz-circle-half-rotate 1.2s infinite linear;
+  -moz-animation: mz-mz-circle-half-rotate 1.2s infinite linear;
+  -ms-animation: mz-mz-circle-half-rotate 1.2s infinite linear;
+  -o-animation: mz-mz-circle-half-rotate 1.2s infinite linear;
+}
+@keyframes "mz-mz-circle-half-rotate" {
+  to {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes mz-mz-circle-half-rotate {
+  to {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes "mz-mz-circle-half-rotate" {
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-ms-keyframes "mz-mz-circle-half-rotate" {
+  to {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes "mz-mz-circle-half-rotate" {
+  to {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+      </style>
+</head>
+<body>
+    <div id="container" style="width:220px;height: 190px;" designer="俄木" developer="麦梓" browser="Chrome、Firefox、Safari">
+      <div class="mz-mz-circle-half">
+        <div class="icon-wrapper"><div class="circle-half"></div></div>
+      </div>
+	</div>
+</body>
+</html>
