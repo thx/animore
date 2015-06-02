@@ -76,9 +76,9 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 		// index of current slideshow item
 		this.current = -1;
 		// slideshow control buttons
-		this.ctrlPrev = this.el.querySelector( 'section.slideshow > nav > span.nav-prev' );
-		this.ctrlNext = this.el.querySelector( 'section.slideshow > nav > span.nav-next' );
-		this.ctrlClose = this.el.querySelector( 'section.slideshow > nav > span.nav-close' );
+		//this.ctrlPrev = this.el.querySelector( 'section.slideshow > nav > span.nav-prev' );
+		//this.ctrlNext = this.el.querySelector( 'section.slideshow > nav > span.nav-next' );
+		this.ctrlClose = this.el.querySelector( 'section.slideshow > .nav-close' );
 		// init masonry grid
 		this._initMasonry();
 		// init events
@@ -217,14 +217,20 @@ define(['jquery', 'masonry', 'classie'], function($, Masonry, classie){
 						    var editor = ace.edit("J_codePanel_html");
 						    editor.setTheme("ace/theme/github");
 						    editor.getSession().setMode("ace/mode/html");
+						    editor.getSession().setUseWrapMode(true);
+						    editor.setShowPrintMargin(false);
 
 						    var editor = ace.edit("J_codePanel_css");
 						    editor.setTheme("ace/theme/github");
 						    editor.getSession().setMode("ace/mode/css");
+						    editor.getSession().setUseWrapMode(true);
+						    editor.setShowPrintMargin(false);
 
 						    var editor = ace.edit("J_codePanel_javascript");
 						    editor.setTheme("ace/theme/github");
 						    editor.getSession().setMode("ace/mode/javascript");
+						    editor.getSession().setUseWrapMode(true);
+						    editor.setShowPrintMargin(false);
 						});
 
 						slideBar.find('.designer').html(ctnr.getAttribute('designer'));
