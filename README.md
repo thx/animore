@@ -1,7 +1,7 @@
 npm install
 bower install
 
-
+zzz
 ###animore平台 动效demo 开发者规范：
 
 - demo的目录结构：所有动效demo都放在 animore/demos/tmpls 中，并配上相应的png预览图，
